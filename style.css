@@ -5,7 +5,7 @@
             --bg-light: #f8f9fa;       /* Background of sections */
             --white: #ffffff;
         }
-
+ 
         /* --- 2. BASE STYLES --- */
         * {
             margin: 0;
@@ -184,6 +184,80 @@
             color: var(--primary-blue);
             margin-bottom: 20px;
         }
+
+        /* Challenge Section Styles */
+.challenge-section {
+    background-color: #001a33; /* Dark Navy Background */
+    color: #ffffff;
+    padding: 80px 8%;
+}
+
+.challenge-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.challenge-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Semi-transparent dark cards */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.challenge-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.challenge-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.challenge-card p {
+    font-size: 0.95rem;
+    color: #d1d1d1;
+    line-height: 1.6;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 30px;
+}
+
+.card-footer i {
+    font-size: 2.5rem;
+    color: #3399ff; /* Blue icon color */
+}
+
+.card-footer .number {
+    background-color: #ffffff;
+    color: #001a33;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
 
         /* --- 6. FOOTER --- */
         footer {
