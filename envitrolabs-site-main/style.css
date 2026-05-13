@@ -1,0 +1,609 @@
+:root {
+            --primary-blue: #2a5298;   /* Main Brand Color */
+            --accent-green: #76b852;   /* Highlight/Secondary Color */
+            --text-dark: #2c3e50;      /* Main Heading Color */
+            --bg-light: #f8f9fa;       /* Background of sections */
+            --white: #ffffff;
+        }
+ 
+        /* --- 2. BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #444;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- 3. NAVIGATION BAR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Container for the dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the dropdown menu (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1001; /* Higher than other elements */
+    border-top: 3px solid var(--accent-green); /* Adds a nice top border */
+    border-radius: 0 0 5px 5px;
+    margin-top: 0px;
+}
+
+/* Individual links inside the dropdown */
+.dropdown-content a {
+    color: #333 !important; /* Forces dark text on white bg */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.3s;
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+    color: var(--primary-blue) !important;
+}
+
+/* SHOW THE DROPDOWN ON HOVER */
+.dropdown:hover .dropdown-content {
+    display:  block;
+}
+
+/* Optional: Slight rotation for the caret icon on hover */
+.dropdown:hover .fa-caret-down {
+    transform: rotate(180deg);
+    transition: 0.3s;
+}
+
+        
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        /* --- 4. HERO SECTION --- 
+           Change the background URL below to use your own image. */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            background: var(--accent-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        /* --- 5. SERVICES SECTION --- */
+        .section-padding {
+            padding: 80px 2%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+       
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 40px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+
+        /* --- SERVICE CARD FLIP ANIMATION --- */
+
+/* The container for the flip effect */
+
+
+    /* --- 4-COLUMN GRID UPDATE --- */
+.services-grid {
+    display: grid;
+    /* Forces 4 columns on desktop, scales down on smaller screens */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; /* Reduced gap to fit more items comfortably */
+    width :100%;
+    max-width:1600px;
+    margin :0 auto;
+    padding: 80px 2%; /* Adjusted padding for better spacing */
+    perspective: 1000px;
+}
+    
+.card {
+    background: transparent;
+    box-shadow: none;
+    width:100%;
+    height: 400px; /* Increased height slightly to accommodate text in narrower cards */
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do the flip on hover */
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.card-front, .card-back {
+    padding: 20px 15px; 
+}
+
+.card-back p {
+    font-size: 0.85rem; /* Slightly smaller text to prevent overflow */
+    line-height: 1.4;
+}
+.card-front {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.card-back {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: rotateY(180deg);
+}
+
+.card-back h3 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.card-back .back-links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-outline {
+    padding: 8px 20px;
+    border: 2px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+
+
+
+/*new hero section    */
+/* --- NEW HERO SECTION STYLES --- */
+.hero-new {
+    background-color: #f0f7ff; /* Light blue background from your image */
+    padding: 60px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    gap: 50px;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 30px; /* Rounded corners like the image */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+}
+
+/* Space after the headline */
+.hero-content h1 {
+    margin-bottom: 25px; 
+}
+
+/* Space between the paragraph and the buttons */
+.hero-description {
+    margin-bottom: 40px; /* This creates the specific gap you're missing */
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+}
+
+/* Ensure the buttons have their own spacing and alignment */
+.hero-btns {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Horizontal space between the two buttons */
+    margin-bottom: 50px; /* Space before the KPI stats row starts */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: #001a33;
+    line-height: 1.1;
+    margin: 20px 0;
+    padding: auto;
+}
+
+.badge {
+    background: #eef2f6;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid #ccd6e0;
+}
+
+/* KPI Circles [cite: 200, 235] */
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #cbd5e0;
+    padding-top: 30px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-circle {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+}
+
+/* Action Buttons [cite: 191] */
+.btn-read {
+    padding: 12px 30px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #000;
+}
+
+.btn-inquiry {
+    padding: 12px 30px;
+    background: #001a33;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+/* --- TEAM SECTION STYLES --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 40px auto 0;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.team-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures faces aren't stretched */
+    transition: 0.5s;
+}
+
+.team-overlay {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    background: rgba(42, 82, 152, 0.9); /* Primary blue with transparency */
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.team-card:hover .team-overlay {
+    bottom: 0;
+}
+
+.team-card:hover img {
+    transform: scale(1.1);
+}
+
+.team-info {
+    padding: 20px;
+}
+
+.team-info h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.team-info span {
+    color: var(--accent-green);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Fix for mobile: stack to 1 column */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}
+
+        /* Challenge Section Styles */
+.challenge-section {
+    background-color: #001a33; /* Dark Navy Background */
+    color: #ffffff;
+    padding: 80px 8%;
+}
+
+.challenge-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.challenge-card {
+    background-color: rgba(255, 255, 255, 0.05); /* Semi-transparent dark cards */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.challenge-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.challenge-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.challenge-card p {
+    font-size: 0.95rem;
+    color: #d1d1d1;
+    line-height: 1.6;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 30px;
+}
+
+.card-footer i {
+    font-size: 2.5rem;
+    color: #3399ff; /* Blue icon color */
+}
+
+.card-footer .number {
+    background-color: #ffffff;
+    color: #001a33;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+        /* --- 6. FOOTER --- */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 60px 10% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        
+.footer-col a {
+    text-decoration: underline; 
+    color: white ;        /* Makes the link take the color of the surrounding text */
+    transition: 0.3s;      /* Makes the hover effect smooth */
+}
+
+/* This defines what happens when you hover over the link */
+.footer-col a:hover {
+    color: var(--accent-green); /* Changes color only when the mouse is over it */
+}
+
+
+
+
+
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Mobile Responsive adjustment */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Simplified for this example */
+            .hero h1 { font-size: 2.2rem; }
+        }
