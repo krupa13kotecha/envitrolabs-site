@@ -152,7 +152,7 @@
 
         /* --- 5. SERVICES SECTION --- */
         .section-padding {
-            padding: 80px 10%;
+            padding: 80px 2%;
         }
 
         .section-title {
@@ -160,11 +160,7 @@
             margin-bottom: 50px;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+       
 
         .card {
             background: var(--white);
@@ -184,6 +180,310 @@
             color: var(--primary-blue);
             margin-bottom: 20px;
         }
+
+
+        /* --- SERVICE CARD FLIP ANIMATION --- */
+
+/* The container for the flip effect */
+
+
+    /* --- 4-COLUMN GRID UPDATE --- */
+.services-grid {
+    display: grid;
+    /* Forces 4 columns on desktop, scales down on smaller screens */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 15px; /* Reduced gap to fit more items comfortably */
+    width :100%;
+    max-width:1600px;
+    margin :0 auto;
+    padding: 80px 2%; /* Adjusted padding for better spacing */
+    perspective: 1000px;
+}
+    
+.card {
+    background: transparent;
+    box-shadow: none;
+    width:100%;
+    height: 400px; /* Increased height slightly to accommodate text in narrower cards */
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Do the flip on hover */
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.card-front, .card-back {
+    padding: 20px 15px; 
+}
+
+.card-back p {
+    font-size: 0.85rem; /* Slightly smaller text to prevent overflow */
+    line-height: 1.4;
+}
+.card-front {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.card-back {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    transform: rotateY(180deg);
+}
+
+.card-back h3 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.card-back .back-links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-outline {
+    padding: 8px 20px;
+    border: 2px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--primary-blue);
+}
+
+
+
+
+/*new hero section    */
+/* --- NEW HERO SECTION STYLES --- */
+.hero-new {
+    background-color: #f0f7ff; /* Light blue background from your image */
+    padding: 60px 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    gap: 50px;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 30px; /* Rounded corners like the image */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+}
+
+/* Space after the headline */
+.hero-content h1 {
+    margin-bottom: 25px; 
+}
+
+/* Space between the paragraph and the buttons */
+.hero-description {
+    margin-bottom: 40px; /* This creates the specific gap you're missing */
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 600px;
+}
+
+/* Ensure the buttons have their own spacing and alignment */
+.hero-btns {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Horizontal space between the two buttons */
+    margin-bottom: 50px; /* Space before the KPI stats row starts */
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    color: #001a33;
+    line-height: 1.1;
+    margin: 20px 0;
+    padding: auto;
+}
+
+.badge {
+    background: #eef2f6;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid #ccd6e0;
+}
+
+/* KPI Circles [cite: 200, 235] */
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    border-top: 1px solid #cbd5e0;
+    padding-top: 30px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-circle {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+}
+
+/* Action Buttons [cite: 191] */
+.btn-read {
+    padding: 12px 30px;
+    border: 1px solid #000;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #000;
+}
+
+.btn-inquiry {
+    padding: 12px 30px;
+    background: #001a33;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+/* --- TEAM SECTION STYLES --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 40px auto 0;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.team-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures faces aren't stretched */
+    transition: 0.5s;
+}
+
+.team-overlay {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    background: rgba(42, 82, 152, 0.9); /* Primary blue with transparency */
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.team-card:hover .team-overlay {
+    bottom: 0;
+}
+
+.team-card:hover img {
+    transform: scale(1.1);
+}
+
+.team-info {
+    padding: 20px;
+}
+
+.team-info h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.team-info span {
+    color: var(--accent-green);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Fix for mobile: stack to 1 column */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+}
 
         /* Challenge Section Styles */
 .challenge-section {
